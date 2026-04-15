@@ -1,1 +1,404 @@
-<h1> Testing </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>EduToolkit – Free Education Tools for Students</title>
+  <meta name="description" content="EduToolkit offers free education tools for students, including a Harvard reference generator, GPA calculator, essay outline generator, and citation checker." />
+  <meta name="keywords" content="education tools, harvard reference generator, GPA calculator, essay outline generator, citation checker, student tools" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="http://edutoolkit.online/" />
+
+  <meta property="og:title" content="EduToolkit – Free Education Tools for Students" />
+  <meta property="og:description" content="Free education tools for students: Harvard reference generator, GPA calculator, essay outline generator, and citation checker." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://edutoolkit.online/" />
+
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #d9e2f0;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --hero: linear-gradient(135deg, #eff6ff, #ffffff);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 56px 0 30px;
+    }
+
+    .hero-box {
+      background: var(--hero);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 42px 28px;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 2.4rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0 0 18px;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: #eef2ff;
+      color: var(--primary);
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.7rem;
+    }
+
+    .section p.lead {
+      margin: 0 0 24px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .tool-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+    }
+
+    .tool-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .tool-link {
+      font-weight: 700;
+    }
+
+    .content-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .content-box h3 {
+      margin-top: 0;
+    }
+
+    .content-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .faq-item {
+      margin-bottom: 16px;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .ad-box {
+      margin: 28px 0;
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      background: #fff;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 36px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 800px) {
+      .tools-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="logo">Edu<span>Toolkit</span></div>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/harvard-reference-generator.html">Harvard Generator</a>
+        <a href="/gpa-calculator.html">GPA Calculator</a>
+        <a href="/essay-outline-generator.html">Essay Outline</a>
+        <a href="/citation-checker.html">Citation Checker</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <h1>Free Education Tools for Students, Essays, and Academic Writing</h1>
+          <p>
+            EduToolkit helps students with fast, simple, and free academic tools.
+            Use our Harvard reference generator, GPA calculator, essay outline generator,
+            and citation checker to make studying easier.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/harvard-reference-generator.html">Start with Harvard Generator</a>
+            <a class="btn btn-secondary" href="/gpa-calculator.html">Use GPA Calculator</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Popular Student Tools</h2>
+        <p class="lead">
+          These tools are designed for students in the UK and worldwide. They are simple to use,
+          mobile friendly, and built to support academic writing, grade calculation, and referencing.
+        </p>
+
+        <div class="tools-grid">
+          <article class="tool-card">
+            <h3>Harvard Reference Generator</h3>
+            <p>
+              Create Harvard-style references quickly for books, websites, journals, and other sources.
+              Ideal for students who need fast and accurate referencing support.
+            </p>
+            <a class="tool-link" href="/harvard-reference-generator.html">Open Harvard Reference Generator →</a>
+          </article>
+
+          <article class="tool-card">
+            <h3>GPA Calculator</h3>
+            <p>
+              Work out GPA and average grades with a simple calculator designed for students and university coursework.
+            </p>
+            <a class="tool-link" href="/gpa-calculator.html">Open GPA Calculator →</a>
+          </article>
+
+          <article class="tool-card">
+            <h3>Essay Outline Generator</h3>
+            <p>
+              Generate a clear essay structure with introduction, main body sections, and conclusion ideas.
+            </p>
+            <a class="tool-link" href="/essay-outline-generator.html">Open Essay Outline Generator →</a>
+          </article>
+
+          <article class="tool-card">
+            <h3>Citation Checker</h3>
+            <p>
+              Review your citations and references to spot missing information and improve consistency.
+            </p>
+            <a class="tool-link" href="/citation-checker.html">Open Citation Checker →</a>
+          </article>
+        </div>
+
+        <div class="ad-box">
+          AdSense placement area
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div class="content-box">
+          <h2>Why EduToolkit?</h2>
+          <p>
+            Many students search for simple academic tools that are easy to use and do not require
+            complicated software. EduToolkit is built to provide practical education tools in one place.
+          </p>
+          <ul>
+            <li>Free student tools</li>
+            <li>Simple and fast design</li>
+            <li>Useful for essays and assignments</li>
+            <li>Works on mobile and desktop</li>
+            <li>Built for UK and international students</li>
+          </ul>
+        </div>
+
+        <div class="content-box">
+          <h2>Who Can Use These Tools?</h2>
+          <p>
+            EduToolkit is suitable for school, college, and university students, as well as anyone
+            needing help with references, grades, citations, or academic writing structure.
+          </p>
+          <ul>
+            <li>University students</li>
+            <li>College students</li>
+            <li>Sixth form students</li>
+            <li>Academic writers</li>
+            <li>International students using Harvard referencing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="content-box">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <h3>Is EduToolkit free to use?</h3>
+            <p>Yes. The tools on EduToolkit are designed to be free and simple to access.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Is this only for UK students?</h3>
+            <p>No. The site is useful globally, but some tools such as the Harvard reference generator are especially relevant for UK academic use.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Which tool should I use first?</h3>
+            <p>If you write essays regularly, start with the Harvard reference generator. If you want to track grades, use the GPA calculator.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Will more tools be added later?</h3>
+            <p>Yes. EduToolkit is designed to grow with additional education and writing tools over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>
+        © 2026 EduToolkit.online — Free education tools for students.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
