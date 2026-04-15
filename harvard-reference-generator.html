@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Harvard Reference Generator – Free UK Harvard Referencing Tool</title>
+  <meta name="description" content="Free Harvard reference generator for students. Create accurate Harvard style references for websites quickly and easily." />
+  <link rel="canonical" href="https://edutoolkit.online/harvard-reference-generator.html"/>
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f0f4ff;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+      background: #10b981;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Harvard Reference Generator</h1>
+  <p>Create Harvard-style references for websites quickly and easily.</p>
+
+  <div class="card">
+    <label>Author</label>
+    <input type="text" id="author" placeholder="e.g. John Smith">
+
+    <label>Year</label>
+    <input type="text" id="year" placeholder="e.g. 2024">
+
+    <label>Title of Page</label>
+    <input type="text" id="title" placeholder="e.g. How to Write Essays">
+
+    <label>Website Name</label>
+    <input type="text" id="website" placeholder="e.g. BBC News">
+
+    <label>URL</label>
+    <input type="text" id="url" placeholder="https://example.com">
+
+    <button onclick="generateReference()">Generate Reference</button>
+
+    <div class="result" id="resultBox">
+      <strong>Harvard Reference:</strong>
+      <p id="output"></p>
+      <button class="copy-btn" onclick="copyText()">Copy</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>How to use Harvard referencing</h2>
+    <p>
+      Harvard referencing is commonly used in UK universities. It includes author name, year,
+      title, website, and URL.
+    </p>
+  </div>
+
+</div>
+
+<script>
+function generateReference() {
+  const author = document.getElementById("author").value || "Author";
+  const year = document.getElementById("year").value || "n.d.";
+  const title = document.getElementById("title").value || "Title";
+  const website = document.getElementById("website").value || "Website";
+  const url = document.getElementById("url").value || "";
+
+  const reference = `${author} (${year}) ${title}. ${website}. Available at: ${url} (Accessed: ${new Date().toLocaleDateString()}).`;
+
+  document.getElementById("output").innerText = reference;
+  document.getElementById("resultBox").style.display = "block";
+}
+
+function copyText() {
+  const text = document.getElementById("output").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+</script>
+
+</body>
+</html>
