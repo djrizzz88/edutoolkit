@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>GPA Calculator – Free Grade Point Average Calculator for Students</title>
+  <meta name="description" content="Free GPA calculator for students. Enter module grades and credits to calculate your grade point average quickly and easily." />
+  <link rel="canonical" href="https://edutoolkit.online/gpa-calculator.html"/>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .top-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p.lead {
+      color: #6b7280;
+      max-width: 760px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid #dbe3ee;
+      margin-top: 20px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #cfd8e3;
+      font-size: 15px;
+      background: #fff;
+    }
+
+    button {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #eef2ff;
+      color: #2563eb;
+    }
+
+    button.remove-btn {
+      background: #ef4444;
+      padding: 11px 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .result {
+      margin-top: 22px;
+      padding: 18px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .result h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .result-main {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1d4ed8;
+      margin-bottom: 8px;
+    }
+
+    .muted {
+      color: #6b7280;
+    }
+
+    .ad-box {
+      margin-top: 22px;
+      padding: 18px;
+      text-align: center;
+      border: 1px dashed #cfd8e3;
+      border-radius: 12px;
+      color: #6b7280;
+      background: #fff;
+    }
+
+    .info-list {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 760px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="top-link" href="/">← Back to Home</a>
+
+    <h1>GPA Calculator</h1>
+    <p class="lead">
+      Use this free GPA calculator to work out your grade point average by entering your module names,
+      grades, and credits. It is useful for university, college, and general academic planning.
+    </p>
+
+    <div class="card">
+      <h2>Enter Your Modules</h2>
+
+      <div id="moduleRows"></div>
+
+      <div class="actions">
+        <button onclick="addModuleRow()">Add Module</button>
+        <button class="secondary" onclick="calculateGPA()">Calculate GPA</button>
+        <button class="secondary" onclick="resetCalculator()">Reset</button>
+      </div>
+
+      <div class="result" id="resultBox">
+        <h3>Your GPA Result</h3>
+        <div class="result-main" id="gpaOutput">0.00</div>
+        <p id="summaryText" class="muted"></p>
+      </div>
+    </div>
+
+    <div class="ad-box">
+      AdSense placement area
+    </div>
+
+    <div class="card">
+      <h2>How this GPA calculator works</h2>
+      <p>
+        This calculator uses a weighted average method. Each module grade is multiplied by its credit value,
+        then all weighted scores are added together and divided by the total number of credits.
+      </p>
+      <ul class="info-list">
+        <li>Enter each module name for your own reference.</li>
+        <li>Enter the grade as a number, for example 68 or 72.</li>
+        <li>Enter the credit value for that module, for example 15 or 20.</li>
+        <li>Click calculate to get your overall average.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Who can use this tool?</h2>
+      <p>
+        This GPA calculator is useful for students in the UK and internationally. If your institution uses a different
+        GPA conversion system, you can still use this page to calculate a weighted average and adapt it later.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    let rowCount = 0;
+
+    function addModuleRow(name = "", grade = "", credits = "") {
+      rowCount++;
+
+      const row = document.createElement("div");
+      row.className = "row";
+      row.id = "row-" + rowCount;
+
+      row.innerHTML = `
+        <div>
+          <label>Module Name</label>
+          <input type="text" placeholder="e.g. Data Analytics" class="module-name" value="${name}">
+        </div>
+        <div>
+          <label>Grade</label>
+          <input type="number" placeholder="e.g. 72" class="module-grade" min="0" max="100" step="any" value="${grade}">
+        </div>
+        <div>
+          <label>Credits</label>
+          <input type="number" placeholder="e.g. 20" class="module-credits" min="1" step="any" value="${credits}">
+        </div>
+        <div>
+          <label>Remove</label>
+          <button class="remove-btn" onclick="removeRow('row-${rowCount}')">X</button>
+        </div>
+      `;
+
+      document.getElementById("moduleRows").appendChild(row);
+    }
+
+    function removeRow(rowId) {
+      const row = document.getElementById(rowId);
+      if (row) {
+        row.remove();
+      }
+    }
+
+    function calculateGPA() {
+      const grades = document.querySelectorAll(".module-grade");
+      const credits = document.querySelectorAll(".module-credits");
+
+      let totalWeighted = 0;
+      let totalCredits = 0;
+      let modulesUsed = 0;
+
+      for (let i = 0; i < grades.length; i++) {
+        const grade = parseFloat(grades[i].value);
+        const credit = parseFloat(credits[i].value);
+
+        if (!isNaN(grade) && !isNaN(credit) && credit > 0) {
+          totalWeighted += grade * credit;
+          totalCredits += credit;
+          modulesUsed++;
+        }
+      }
+
+      if (totalCredits === 0) {
+        alert("Please enter at least one valid module grade and credit value.");
+        return;
+      }
+
+      const gpa = totalWeighted / totalCredits;
+
+      document.getElementById("gpaOutput").textContent = gpa.toFixed(2);
+      document.getElementById("summaryText").textContent =
+        `Calculated from ${modulesUsed} module(s) and ${totalCredits} total credits using a weighted average method.`;
+
+      document.getElementById("resultBox").style.display = "block";
+    }
+
+    function resetCalculator() {
+      document.getElementById("moduleRows").innerHTML = "";
+      document.getElementById("resultBox").style.display = "none";
+      rowCount = 0;
+
+      addModuleRow();
+      addModuleRow();
+      addModuleRow();
+    }
+
+    // Start with 3 rows
+    addModuleRow();
+    addModuleRow();
+    addModuleRow();
+  </script>
+</body>
+</html>
