@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Essay Outline Generator – Free Academic Essay Structure Tool</title>
+  <meta name="description" content="Free essay outline generator for students. Create a clear academic essay structure with introduction, body paragraphs, and conclusion." />
+  <link rel="canonical" href="https://edutoolkit.online/essay-outline-generator.html"/>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p.lead {
+      color: #6b7280;
+      max-width: 760px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid #dbe3ee;
+      margin-top: 20px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #cfd8e3;
+      font-size: 15px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #eef2ff;
+      color: #2563eb;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .result {
+      margin-top: 22px;
+      padding: 20px;
+      background: #f8fbff;
+      border: 1px solid #dbeafe;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .outline-section {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e5edf7;
+    }
+
+    .outline-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .outline-section h3 {
+      margin: 0 0 8px;
+      color: #1d4ed8;
+      font-size: 1.1rem;
+    }
+
+    .outline-section ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .outline-section li {
+      margin-bottom: 8px;
+    }
+
+    .muted {
+      color: #6b7280;
+    }
+
+    .ad-box {
+      margin-top: 22px;
+      padding: 18px;
+      text-align: center;
+      border: 1px dashed #cfd8e3;
+      border-radius: 12px;
+      color: #6b7280;
+      background: #fff;
+    }
+
+    .copy-box {
+      margin-top: 16px;
+    }
+
+    .copy-box button {
+      background: #10b981;
+    }
+  </style>
+</head>
+<body>
+
+  <header style="background:#fff;border-bottom:1px solid #ddd;">
+    <div style="max-width:1100px;margin:auto;padding:15px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+      <div style="font-weight:800;font-size:20px;">
+        <a href="/" style="text-decoration:none;color:#111;">
+          Edu<span style="color:#2563eb;">Toolkit</span>
+        </a>
+      </div>
+
+      <nav style="display:flex;gap:15px;flex-wrap:wrap;">
+        <a href="/" style="text-decoration:none;color:#555;font-weight:600;">Home</a>
+        <a href="/harvard-reference-generator.html" style="text-decoration:none;color:#555;font-weight:600;">Harvard</a>
+        <a href="/gpa-calculator.html" style="text-decoration:none;color:#555;font-weight:600;">GPA</a>
+        <a href="/essay-outline-generator.html" style="text-decoration:none;color:#555;font-weight:600;">Essay</a>
+        <a href="/citation-checker.html" style="text-decoration:none;color:#555;font-weight:600;">Citation</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Essay Outline Generator</h1>
+    <p class="lead">
+      Use this free essay outline generator to create a clear structure for your academic essay.
+      It helps students organise ideas into an introduction, body paragraphs, and conclusion.
+    </p>
+
+    <div class="card">
+      <h2>Generate Your Essay Outline</h2>
+
+      <div class="field">
+        <label for="essayTopic">Essay Topic</label>
+        <input type="text" id="essayTopic" placeholder="e.g. The impact of artificial intelligence on higher education">
+      </div>
+
+      <div class="field">
+        <label for="essayType">Essay Type</label>
+        <select id="essayType">
+          <option value="argumentative">Argumentative Essay</option>
+          <option value="analytical">Analytical Essay</option>
+          <option value="compare">Compare and Contrast Essay</option>
+          <option value="reflective">Reflective Essay</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="mainIdea">Main Position / Central Argument</label>
+        <textarea id="mainIdea" placeholder="e.g. Artificial intelligence can improve personalised learning, but it must be used ethically and with proper academic oversight."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="pointOne">Main Point 1</label>
+        <input type="text" id="pointOne" placeholder="e.g. AI can improve personalised learning experiences">
+      </div>
+
+      <div class="field">
+        <label for="pointTwo">Main Point 2</label>
+        <input type="text" id="pointTwo" placeholder="e.g. AI can support teachers through automation and feedback tools">
+      </div>
+
+      <div class="field">
+        <label for="pointThree">Main Point 3</label>
+        <input type="text" id="pointThree" placeholder="e.g. Ethical risks and over-reliance on AI must be critically examined">
+      </div>
+
+      <div class="actions">
+        <button onclick="generateOutline()">Generate Outline</button>
+        <button class="secondary" onclick="resetOutline()">Reset</button>
+      </div>
+
+      <div class="result" id="resultBox">
+        <div class="outline-section">
+          <h3>Essay Title</h3>
+          <p id="outlineTitle"></p>
+        </div>
+
+        <div class="outline-section">
+          <h3>Introduction</h3>
+          <ul id="introList"></ul>
+        </div>
+
+        <div class="outline-section">
+          <h3>Body Paragraph 1</h3>
+          <ul id="bodyOneList"></ul>
+        </div>
+
+        <div class="outline-section">
+          <h3>Body Paragraph 2</h3>
+          <ul id="bodyTwoList"></ul>
+        </div>
+
+        <div class="outline-section">
+          <h3>Body Paragraph 3</h3>
+          <ul id="bodyThreeList"></ul>
+        </div>
+
+        <div class="outline-section">
+          <h3>Conclusion</h3>
+          <ul id="conclusionList"></ul>
+        </div>
+
+        <div class="copy-box">
+          <button onclick="copyOutline()">Copy Outline</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-box">
+      AdSense placement area
+    </div>
+
+    <div class="card">
+      <h2>What is an essay outline?</h2>
+      <p>
+        An essay outline is a simple structure that helps you organise your ideas before writing.
+        A strong outline can make your essay clearer, more logical, and easier to complete.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Why use an essay outline generator?</h2>
+      <p>
+        Students often struggle with structure more than content. This tool helps by turning a topic
+        and key points into an organised academic outline that you can build on.
+      </p>
+      <ul>
+        <li>Improves essay planning</li>
+        <li>Helps organise arguments clearly</li>
+        <li>Saves time during academic writing</li>
+        <li>Useful for university and college assignments</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function setListItems(listId, items) {
+      const list = document.getElementById(listId);
+      list.innerHTML = "";
+
+      items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+
+    function generateOutline() {
+      const topic = document.getElementById("essayTopic").value.trim();
+      const essayType = document.getElementById("essayType").value;
+      const mainIdea = document.getElementById("mainIdea").value.trim();
+      const pointOne = document.getElementById("pointOne").value.trim();
+      const pointTwo = document.getElementById("pointTwo").value.trim();
+      const pointThree = document.getElementById("pointThree").value.trim();
+
+      if (!topic || !mainIdea || !pointOne || !pointTwo || !pointThree) {
+        alert("Please complete all fields before generating the outline.");
+        return;
+      }
+
+      let introText = "Introduce the topic and explain why it is important.";
+      let thesisText = "Present the central argument clearly.";
+
+      if (essayType === "argumentative") {
+        introText = "Introduce the debate around the topic and give context.";
+        thesisText = "State your argument and the position your essay will defend.";
+      } else if (essayType === "analytical") {
+        introText = "Introduce the topic and define the focus of analysis.";
+        thesisText = "Explain the main analytical perspective of the essay.";
+      } else if (essayType === "compare") {
+        introText = "Introduce the two sides, concepts, or perspectives being compared.";
+        thesisText = "State what the comparison will reveal.";
+      } else if (essayType === "reflective") {
+        introText = "Introduce the topic or experience and explain its significance.";
+        thesisText = "State the key reflection or insight developed in the essay.";
+      }
+
+      document.getElementById("outlineTitle").textContent = topic;
+
+      setListItems("introList", [
+        introText,
+        "Give brief background information on the topic.",
+        thesisText,
+        `Thesis / central idea: ${mainIdea}`
+      ]);
+
+      setListItems("bodyOneList", [
+        `Main point: ${pointOne}`,
+        "Explain the point clearly in relation to the essay topic.",
+        "Support the point with evidence, examples, or academic sources.",
+        "Link this paragraph back to the thesis."
+      ]);
+
+      setListItems("bodyTwoList", [
+        `Main point: ${pointTwo}`,
+        "Develop the argument or analysis in more depth.",
+        "Use evidence, theory, or examples to support discussion.",
+        "Show how this point strengthens the overall essay."
+      ]);
+
+      setListItems("bodyThreeList", [
+        `Main point: ${pointThree}`,
+        "Present a final supporting argument, critical issue, or contrasting perspective.",
+        "Evaluate the point and connect it to the wider essay discussion.",
+        "Prepare the reader for the conclusion."
+      ]);
+
+      setListItems("conclusionList", [
+        "Restate the main argument in different words.",
+        "Summarise the key points discussed in the body paragraphs.",
+        "Show the final significance of the essay topic.",
+        "End with a clear closing statement."
+      ]);
+
+      document.getElementById("resultBox").style.display = "block";
+    }
+
+    function resetOutline() {
+      document.getElementById("essayTopic").value = "";
+      document.getElementById("essayType").value = "argumentative";
+      document.getElementById("mainIdea").value = "";
+      document.getElementById("pointOne").value = "";
+      document.getElementById("pointTwo").value = "";
+      document.getElementById("pointThree").value = "";
+      document.getElementById("resultBox").style.display = "none";
+    }
+
+    function copyOutline() {
+      const title = document.getElementById("outlineTitle").textContent;
+
+      function listToText(listId) {
+        const items = document.querySelectorAll(`#${listId} li`);
+        let output = "";
+        items.forEach((item, index) => {
+          output += `${index + 1}. ${item.textContent}\n`;
+        });
+        return output;
+      }
+
+      const fullText =
+`Essay Title: ${title}
+
+Introduction
+${listToText("introList")}
+
+Body Paragraph 1
+${listToText("bodyOneList")}
+
+Body Paragraph 2
+${listToText("bodyTwoList")}
+
+Body Paragraph 3
+${listToText("bodyThreeList")}
+
+Conclusion
+${listToText("conclusionList")}`;
+
+      navigator.clipboard.writeText(fullText);
+      alert("Outline copied.");
+    }
+  </script>
+</body>
+</html>
