@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>APA Citation Checker – Free APA Reference Tool</title>
+  <meta name="description" content="Free APA citation checker. Review your APA references, detect issues, and improve your citation formatting easily." />
+  <link rel="canonical" href="http://edutoolkit.online/apa-citation-checker.html"/>
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      min-height: 200px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #f0f4ff;
+      display: none;
+    }
+
+    .warning {
+      color: #b45309;
+    }
+
+    .success {
+      color: #059669;
+    }
+  </style>
+</head>
+<body>
+
+<header style="background:#fff;border-bottom:1px solid #ddd;">
+  <div style="max-width:1100px;margin:auto;padding:15px;display:flex;justify-content:space-between;">
+    <div style="font-weight:800;">
+      <a href="/" style="text-decoration:none;color:#111;">
+        Edu<span style="color:#2563eb;">Toolkit</span>
+      </a>
+    </div>
+
+    <nav style="display:flex;gap:15px;">
+      <a href="/">Home</a>
+      <a href="/harvard-reference-generator.html">Harvard Reference generator</a>
+      <a href="/gpa-calculator.html">GPA Calculator</a>
+      <a href="/essay-outline-generator.html">Essay Outline Generator</a>
+      <a href="/citation-checker.html">Citation checker</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h1>APA Citation Checker</h1>
+  <p>Paste your APA references below to check for common formatting issues.</p>
+
+  <div class="card">
+    <textarea id="inputText" placeholder="Paste your APA references here..."></textarea>
+    <button onclick="checkAPA()">Check APA Citations</button>
+
+    <div class="result" id="resultBox">
+      <p id="summary"></p>
+      <ul id="issues"></ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>What is APA referencing?</h2>
+    <p>
+      APA referencing is commonly used in academic writing, especially in social sciences.
+      It includes author, year, title, and source details.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/harvard-reference-generator.html">Harvard Reference Generator</a></li>
+      <li><a href="/citation-checker.html">Citation Checker</a></li>
+      <li><a href="/gpa-calculator.html">GPA Calculator</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function checkAPA() {
+  const text = document.getElementById("inputText").value;
+  const lines = text.split("\n").filter(line => line.trim() !== "");
+  const issues = [];
+
+  lines.forEach((line, index) => {
+    const lineNumber = index + 1;
+
+    if (!/\(\d{4}\)/.test(line)) {
+      issues.push(`Line ${lineNumber}: Missing year (APA requires year in brackets).`);
+    }
+
+    if (line.length < 20) {
+      issues.push(`Line ${lineNumber}: Reference seems too short.`);
+    }
+
+    if (!/\./.test(line)) {
+      issues.push(`Line ${lineNumber}: Missing punctuation.`);
+    }
+  });
+
+  document.getElementById("resultBox").style.display = "block";
+  document.getElementById("summary").innerText =
+    `Checked ${lines.length} reference(s). Found ${issues.length} issue(s).`;
+
+  const issuesList = document.getElementById("issues");
+  issuesList.innerHTML = "";
+
+  if (issues.length === 0) {
+    issuesList.innerHTML = "<li class='success'>No major issues found.</li>";
+  } else {
+    issues.forEach(issue => {
+      const li = document.createElement("li");
+      li.textContent = issue;
+      li.className = "warning";
+      issuesList.appendChild(li);
+    });
+  }
+}
+</script>
+
+</body>
+</html>
