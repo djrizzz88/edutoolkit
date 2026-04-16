@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Citation Checker – Free Reference and Citation Review Tool</title>
+  <meta name="description" content="Free citation checker for students. Review references, find duplicate citations, and spot possible missing details in your reference list." />
+  <link rel="canonical" href="https://edutoolkit.online/citation-checker.html"/>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p.lead {
+      color: #6b7280;
+      max-width: 760px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid #dbe3ee;
+      margin-top: 20px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #cfd8e3;
+      font-size: 15px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 220px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    button {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #eef2ff;
+      color: #2563eb;
+    }
+
+    button.copy-btn {
+      background: #10b981;
+    }
+
+    .results {
+      display: none;
+      margin-top: 22px;
+    }
+
+    .result-section {
+      margin-bottom: 18px;
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #dbe3ee;
+      background: #f9fbff;
+    }
+
+    .result-section h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .success {
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .warning {
+      border-color: #fde68a;
+      background: #fffbeb;
+    }
+
+    .muted {
+      color: #6b7280;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .clean-output {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #dbe3ee;
+    }
+
+    .ad-box {
+      margin-top: 22px;
+      padding: 18px;
+      text-align: center;
+      border: 1px dashed #cfd8e3;
+      border-radius: 12px;
+      color: #6b7280;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <header style="background:#fff;border-bottom:1px solid #ddd;">
+    <div style="max-width:1100px;margin:auto;padding:15px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+      <div style="font-weight:800;font-size:20px;">
+        <a href="/" style="text-decoration:none;color:#111;">
+          Edu<span style="color:#2563eb;">Toolkit</span>
+        </a>
+      </div>
+
+      <nav style="display:flex;gap:15px;flex-wrap:wrap;">
+        <a href="/" style="text-decoration:none;color:#555;font-weight:600;">Home</a>
+        <a href="/harvard-reference-generator.html" style="text-decoration:none;color:#555;font-weight:600;">Harvard</a>
+        <a href="/gpa-calculator.html" style="text-decoration:none;color:#555;font-weight:600;">GPA</a>
+        <a href="/essay-outline-generator.html" style="text-decoration:none;color:#555;font-weight:600;">Essay</a>
+        <a href="/citation-checker.html" style="text-decoration:none;color:#555;font-weight:600;">Citation</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Citation Checker</h1>
+    <p class="lead">
+      Paste your references below to review them for possible issues such as duplicate citations,
+      missing years, short incomplete entries, and formatting inconsistencies.
+    </p>
+
+    <div class="card">
+      <label for="citationStyle">Citation Style</label>
+      <select id="citationStyle">
+        <option value="harvard">Harvard</option>
+        <option value="general">General Check</option>
+      </select>
+
+      <div style="margin-top:16px;">
+        <label for="citationsInput">Paste References or Citations</label>
+        <textarea id="citationsInput" placeholder="Paste one reference per line...
+Example:
+Smith, J. (2024) Academic Writing Skills. London: Study Press.
+BBC News (2024) University reforms explained. Available at: https://example.com (Accessed: 12 April 2026)."></textarea>
+      </div>
+
+      <div class="actions">
+        <button onclick="checkCitations()">Check Citations</button>
+        <button class="secondary" onclick="resetChecker()">Reset</button>
+      </div>
+
+      <div class="results" id="resultsBox">
+        <div class="result-section success">
+          <h3>Summary</h3>
+          <p id="summaryText" class="muted"></p>
+        </div>
+
+        <div class="result-section warning">
+          <h3>Possible Issues Found</h3>
+          <ul id="issuesList"></ul>
+        </div>
+
+        <div class="result-section">
+          <h3>Cleaned Reference List</h3>
+          <div class="clean-output" id="cleanOutput"></div>
+          <div class="actions">
+            <button class="copy-btn" onclick="copyCleanedList()">Copy Cleaned List</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-box">
+      AdSense placement area
+    </div>
+
+    <div class="card">
+      <h2>What does this citation checker do?</h2>
+      <p>
+        This tool helps students review references before submission. It does not replace official university guidance,
+        but it can help spot common issues such as duplicates, missing dates, incomplete entries, and likely missing URL details.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Why checking citations matters</h2>
+      <p>
+        A strong reference list improves academic quality and reduces simple formatting mistakes.
+        Clear and consistent citations are important in essays, reports, dissertations, and coursework.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function normaliseLine(line) {
+      return line.trim().replace(/\s+/g, " ");
+    }
+
+    function hasYear(line) {
+      return /\(\d{4}\)|\b\d{4}\b/.test(line);
+    }
+
+    function looksTooShort(line) {
+      return line.length < 20;
+    }
+
+    function mentionsAvailableAt(line) {
+      return /available at:/i.test(line);
+    }
+
+    function hasUrl(line) {
+      return /https?:\/\/\S+/i.test(line) || /www\.\S+/i.test(line);
+    }
+
+    function checkCitations() {
+      const input = document.getElementById("citationsInput").value;
+      const style = document.getElementById("citationStyle").value;
+
+      if (!input.trim()) {
+        alert("Please paste at least one citation or reference.");
+        return;
+      }
+
+      const rawLines = input.split("\n");
+      const cleanedLines = rawLines
+        .map(normaliseLine)
+        .filter(line => line.length > 0);
+
+      const issues = [];
+      const seen = new Map();
+      const finalLines = [];
+
+      cleanedLines.forEach((line, index) => {
+        const lineNumber = index + 1;
+        finalLines.push(line);
+
+        const key = line.toLowerCase();
+        if (seen.has(key)) {
+          issues.push(`Line ${lineNumber}: possible duplicate of line ${seen.get(key)}.`);
+        } else {
+          seen.set(key, lineNumber);
+        }
+
+        if (looksTooShort(line)) {
+          issues.push(`Line ${lineNumber}: reference looks very short and may be incomplete.`);
+        }
+
+        if (!hasYear(line)) {
+          issues.push(`Line ${lineNumber}: no obvious year found.`);
+        }
+
+        if (style === "harvard") {
+          if (mentionsAvailableAt(line) && !hasUrl(line)) {
+            issues.push(`Line ${lineNumber}: mentions "Available at" but no URL was detected.`);
+          }
+
+          if (/website|web page|online/i.test(line) && !/accessed:/i.test(line)) {
+            issues.push(`Line ${lineNumber}: may be missing an Accessed date for an online source.`);
+          }
+        }
+      });
+
+      const summaryText = `Checked ${cleanedLines.length} reference(s). Found ${issues.length} possible issue(s).`;
+      document.getElementById("summaryText").textContent = summaryText;
+
+      const issuesList = document.getElementById("issuesList");
+      issuesList.innerHTML = "";
+
+      if (issues.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "No obvious issues found by the basic checker.";
+        issuesList.appendChild(li);
+      } else {
+        issues.forEach(issue => {
+          const li = document.createElement("li");
+          li.textContent = issue;
+          issuesList.appendChild(li);
+        });
+      }
+
+      document.getElementById("cleanOutput").textContent = finalLines.join("\n");
+      document.getElementById("resultsBox").style.display = "block";
+    }
+
+    function resetChecker() {
+      document.getElementById("citationsInput").value = "";
+      document.getElementById("citationStyle").value = "harvard";
+      document.getElementById("resultsBox").style.display = "none";
+      document.getElementById("issuesList").innerHTML = "";
+      document.getElementById("cleanOutput").textContent = "";
+      document.getElementById("summaryText").textContent = "";
+    }
+
+    function copyCleanedList() {
+      const text = document.getElementById("cleanOutput").textContent;
+      navigator.clipboard.writeText(text);
+      alert("Cleaned reference list copied.");
+    }
+  </script>
+</body>
+</html>
