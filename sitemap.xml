@@ -1,27 +1,32 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-<loc>http://edutoolkit.online/</loc>
-<lastmod>2026-04-16T00:36:57+00:00</lastmod>
-<priority>1.00</priority>
-</url>
-<url>
-<loc>http://edutoolkit.online/harvard-reference-generator.html</loc>
-<lastmod>2026-04-16T00:36:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>http://edutoolkit.online/gpa-calculator.html</loc>
-<lastmod>2026-04-16T00:36:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>http://edutoolkit.online/essay-outline-generator.html</loc>
-<lastmod>2026-04-16T00:36:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>http://edutoolkit.online/citation-checker.html</loc>
-<lastmod>2026-04-16T00:36:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://edutoolkit.online/</loc>
+  </url>
+
+  <url>
+    <loc>https://edutoolkit.online/harvard-reference-generator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://edutoolkit.online/gpa-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://edutoolkit.online/essay-outline-generator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://edutoolkit.online/citation-checker.html</loc>
+  </url>
+
+  <url>
+    <loc>https://edutoolkit.online/how-to-use-harvard-referencing.html</loc>
+  </url>
+
+  <url>
+    <loc>https://edutoolkit.online/how-to-calculate-gpa.html</loc>
+  </url>
+
 </urlset>
