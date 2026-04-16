@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://edutoolkit.online/sitemap.xml
+Sitemap: http://edutoolkit.online/sitemap.xml
