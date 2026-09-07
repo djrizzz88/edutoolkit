@@ -1,0 +1,7 @@
+import {env} from 'cloudflare:workers';
+import {planFor} from './plans';
+export function database(){const db=(env as unknown as {DB?:D1Database}).DB;if(!db)throw Error('Account storage is temporarily unavailable. Please try again.');return db}
+export function identity(r:Request){const id=r.headers.get('oai-authenticated-user-id'),email=r.headers.get('oai-authenticated-user-email');return id&&email?{id,email}:null}
+export function requireOrigin(r:Request){const origin=r.headers.get('origin');if(!origin||origin!==new URL(r.url).origin)throw Error('This request must come from your EduTools workspace.')}
+export async function profile(r:Request){const who=identity(r);return who?await database().prepare('SELECT * FROM profiles WHERE id = ?').bind(who.id).first<any>():null}
+export async function useAllowance(user:any,kind:'research'|'checks'){const plan=planFor(user.plan);const period=new Date().toISOString().slice(0,kind==='research'?7:10);const limit=kind==='research'?plan.research:plan.checks;const row=await database().prepare('INSERT INTO account_usage (user_id,period,kind,count) VALUES (?,?,?,1) ON CONFLICT(user_id,period,kind) DO UPDATE SET count=count+1 WHERE count < ? RETURNING count').bind(user.id,period,kind,limit).first();if(!row)throw Error(`Your ${kind==='research'?'monthly keyword report':'daily website check'} allowance is used. Choose a larger package or wait for your allowance to reset.`)}

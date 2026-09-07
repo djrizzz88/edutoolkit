@@ -1,0 +1,3 @@
+import {profile,requireOrigin,useAllowance} from '@/lib/account';
+import {keywordIdeas} from '@/lib/research';
+export async function POST(r:Request){try{requireOrigin(r);const user=await profile(r);if(!user)return Response.json({error:'Create a free account to generate keyword reports.'},{status:401});const raw=await r.text();if(raw.length>4096)throw Error('Request too large.');const {seed}=JSON.parse(raw);if(typeof seed!=='string')throw Error('Enter a seed topic.');const keywords=keywordIdeas(seed);await useAllowance(user,'research');return Response.json({keywords,source:'Generated ideas; no live demand metrics.'})}catch(e:any){return Response.json({error:e.message},{status:e.message.includes('allowance')?429:400})}}

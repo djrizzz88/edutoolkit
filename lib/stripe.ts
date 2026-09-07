@@ -1,0 +1,4 @@
+import {env} from 'cloudflare:workers';
+export const config=()=>env as unknown as Record<string,string>;
+export async function stripe(path:string,body?:Record<string,string>,idempotency?:string){const c=config();if(!c.STRIPE_SECRET_KEY)throw Error('Paid checkout is not connected yet. Your package choice is saved; no payment has been taken.');const headers:Record<string,string>={Authorization:`Bearer ${c.STRIPE_SECRET_KEY}`};if(body)headers['Content-Type']='application/x-www-form-urlencoded';if(idempotency)headers['Idempotency-Key']=idempotency;const r=await fetch(`https://api.stripe.com/v1/${path}`,{method:body?'POST':'GET',headers,body:body?new URLSearchParams(body):undefined});const d:any=await r.json();if(!r.ok)throw Error('Payment provider could not complete this request. Please try again.');return d}
+export {verifyWebhook} from './payment-security';
